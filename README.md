@@ -1,5 +1,7 @@
 # Lua Filter Does Not Work in Quarto
 
+See [quarto-dev/quarto-cli#9726](https://github.com/quarto-dev/quarto-cli/issues/9726)
+
 The following command does not work in Quarto:
 
 ```shell
