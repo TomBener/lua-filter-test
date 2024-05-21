@@ -8,3 +8,4 @@ format:
 
 filters:
   - localize-cnbib
+  - abstract-section
