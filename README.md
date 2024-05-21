@@ -2,16 +2,35 @@
 
 See [quarto-dev/quarto-cli#9726](https://github.com/quarto-dev/quarto-cli/issues/9726)
 
+Specify the Lua filter in the YAML front matter:
+
+```yaml
+filters:
+  - localize-cnbib
+```
+
 The following command does not work in Quarto:
 
 ```shell
 quarto render --to html
 ```
 
+```html
+<div id="ref-han2020" class="csl-entry" role="listitem">
+韩旭东, 李德阳, 王若男, et al., 2020. 盈余分配制度对合作社经营绩效影响的实证分析：基于新制度经济学视角[J]. 中国农村经济(4): 56–77.
+</div>
+```
+
 But by applying the Lua filter on the command line, it works:
 
 ```shell
 quarto render --to html -L _extensions/filters/localize-cnbib/localize-cnbib.lua
+```
+
+```html
+<div id="ref-han2020" class="csl-entry" role="listitem">
+韩旭东, 李德阳, 王若男, 等, 2020. 盈余分配制度对合作社经营绩效影响的实证分析：基于新制度经济学视角[J]. 中国农村经济(4): 56–77.
+</div>
 ```
 
 Quarto check:
