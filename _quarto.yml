@@ -1,0 +1,10 @@
+title: "Lua Filter Test"
+bibliography: bib.bib
+csl: gb-author-date.csl
+
+format:
+  html: default
+  docx: default
+
+filters:
+  - localize-cnbib
