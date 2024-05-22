@@ -1,11 +1,1 @@
-# Abstract
-
-Place abstract here.
-
-Multiple paragraphs are possible.
-
-# Test
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
 Testing citations @knuth84 and @han2020 for using the Lua filter.
