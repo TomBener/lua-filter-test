@@ -41,25 +41,24 @@ function process_cite(el)
     return el
 end
 
--- Function to process `el al.` in bibliography entries
+-- Function to process `et al.` in bibliography entries
 function process_paragraph(para)
-    local inlines = para.content
     local new_inlines = {}
     local i = 1
 
-    while i <= #inlines do
-        if i <= #inlines - 2 and inlines[i].t == "Str" and inlines[i].text == "et" and
-            inlines[i + 1].t == "Space" and inlines[i + 2].t == "Str" and inlines[i + 2].text == "al.," then
+    while i <= #para.content do
+        if i <= #para.content - 2 and para.content[i].t == "Str" and para.content[i].text == "et" and
+            para.content[i + 1].t == "Space" and para.content[i + 2].t == "Str" and para.content[i + 2].text == "al.," then
             -- Only replace if Chinese characters are present
-            if inlines[i - 2].t == "Str" and contains_chinese(inlines[i - 2].text) then
+            if i > 2 and para.content[i - 2].t == "Str" and contains_chinese(para.content[i - 2].text) then
                 table.insert(new_inlines, pandoc.Str("等,"))
                 i = i + 3 -- Skip the next two elements
             else
-                table.insert(new_inlines, inlines[i])
+                table.insert(new_inlines, para.content[i])
                 i = i + 1
             end
         else
-            table.insert(new_inlines, inlines[i])
+            table.insert(new_inlines, para.content[i])
             i = i + 1
         end
     end
@@ -69,12 +68,12 @@ function process_paragraph(para)
 end
 
 -- Function to process Div elements
-function Div(el)
+function process_div(el)
     if el.classes:includes("csl-entry") then
         for _, block in ipairs(el.content) do
             if block.t == "Para" then
                 process_paragraph(block)
-                Para(block)
+                process_para(block)
             end
         end
     end
@@ -82,7 +81,7 @@ function Div(el)
 end
 
 -- Function to process localization in bibliography entries
-function Para(elem)
+function process_para(elem)
     for i = 1, #elem.content do
         local v = elem.content[i]
         local prev_str = elem.content[i - 2]
@@ -133,6 +132,6 @@ return {
     {
         Cite = process_cite,
         Link = process_cite,
-        Div = Div
+        Div = process_div
     }
 }
