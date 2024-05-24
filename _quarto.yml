@@ -9,3 +9,4 @@ format:
 filters:
   - localize-cnbib
   - abstract-section
+  - citation-backlinks
