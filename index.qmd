@@ -1,1 +1,1 @@
-Testing citations @knuth84 and @han2020 for using the Lua filter.
+Testing citations @knuth84 and for using the Lua filter [@weismueller2022; @han2020].
