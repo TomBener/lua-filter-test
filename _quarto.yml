@@ -1,12 +1,14 @@
-title: "Lua Filter Test"
+project:
+  type: book
+  output-dir: _book
+book:
+  title: Lua Filter Test in Quarto
+  chapters:
+    - index.qmd
+    - references.qmd
 bibliography: bib.bib
 csl: gb-author-date.csl
-
-filters:
-  - localize-cnbib
-  - abstract-section
-  - citation-backlinks
-
 format:
   html: default
   docx: default
+  pdf: default

@@ -16,6 +16,10 @@
       <name>Zeping Lee</name>
       <email>zepinglee@gmail.com</email>
     </contributor>
+    <contributor>
+      <name>Tom Ben</name>
+      <uri>https://github.com/TomBener</uri>
+    </contributor>
     <category citation-format="author-date"/>
     <category field="generic-base"/>
     <summary>The Chinese GB/T 7714-2015 author-date style</summary>

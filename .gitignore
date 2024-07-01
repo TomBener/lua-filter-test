@@ -3,4 +3,5 @@
 *.pdf
 
 /.quarto/
-/index_files/
+*_files/
+_book/
